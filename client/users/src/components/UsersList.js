@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 import UsersCard from './UsersCard';
+import User from './User';
 
 const UsersList = () => {
     const [ users, setUsers ] = useState([]);
@@ -20,17 +22,25 @@ const UsersList = () => {
 
     return(
         <>
-        {users.map(user => {
-            return (
-            <UsersCard 
-            key={user.id}
-            name={user.name}
-            />
-            );
-        })}
-
-
+            {users.map(user => {
+                return (
+                    <UserDetails 
+                    key={user.id}
+                    user={user}
+                    />
+                );
+            })}
         </>
+    );
+}
+
+function UserDetails({ user }) {
+    const { id, name } = user;
+
+    return (
+      <NavLink to={`/users/${id}/posts`}>
+        <User name={name} id={id}/>
+      </NavLink>
     );
 }
 
