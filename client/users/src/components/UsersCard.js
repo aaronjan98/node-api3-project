@@ -1,9 +1,11 @@
 import React from 'react';
 
-const UsersCard = () => {
+const UsersCard = props => {
 
     return (
-        <h6>Hi!</h6>
+        <div>
+            {props.name}
+        </div>
     );
 }
 

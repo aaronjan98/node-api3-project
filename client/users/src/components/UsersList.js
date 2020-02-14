@@ -4,12 +4,13 @@ import axios from 'axios';
 import UsersCard from './UsersCard';
 
 const UsersList = () => {
-    const [ userInfo, setUserInfo ] = useState([]);
+    const [ users, setUsers ] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:5000/users')
         .then(res => {
-            console.log(res);
+            console.log(res.data);
+            setUsers(res.data);
         })
         .catch(err => {
             console.log(err);
@@ -18,7 +19,18 @@ const UsersList = () => {
 
 
     return(
-        <UsersCard />
+        <>
+        {users.map(user => {
+            return (
+            <UsersCard 
+            key={user.id}
+            name={user.name}
+            />
+            );
+        })}
+
+
+        </>
     );
 }
 
