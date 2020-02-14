@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles/App.css';
 
-import UserList from './components/UserList';
+import UsersList from './components/UsersList';
 
 function App() {
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <UserList />
+      <UsersList />
     </div>
   );
 }
